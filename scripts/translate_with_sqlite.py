@@ -59,7 +59,7 @@ def main(args):
     cursor = conn.cursor()
 
     with open(args.input, 'rt') as f:
-        all_lines = [(json.loads(line)["location"], json.loads(line)["text"]) for line in f]
+        all_lines = [(str(json.loads(line)["location"]), json.loads(line)["text"]) for line in f]
 
     already_translated = set(
         row[0] for row in cursor.execute("SELECT location FROM translations").fetchall()

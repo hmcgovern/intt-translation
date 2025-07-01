@@ -2,6 +2,7 @@ import json
 import gzip
 import re
 import argparse as ap
+from utils import Location
 
 import unicodedata as ud
 
@@ -27,11 +28,12 @@ def process_json_line(json_line):
             "text": data["text"] # Remove Nikkud from the "line" field and store as "text"
         }
     elif args.lang == "Hebrew":
-
         processed_data = {
             "location": data["eng_ref"],  # We're going to keep everything consistent by using English references
-            "text": data["line"]  # Remove Nikkud from the "line" field and store as "text"
+            "text": remove_nikkud(data["line"])  # Remove Nikkud from the "line" field and store as "text"
         }
+    # make it a Location object so it is saved in the same format as the XML human translations 
+    processed_data['location'] = Location(processed_data['location'])
     
     return processed_data
 

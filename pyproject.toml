@@ -6,7 +6,7 @@ authors = [
     {name = "Hope",email = "hope.mcgovern@cl.cam.ac.uk"}
 ]
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10,<3.13"
 dependencies = [
     "scons (>=4.9.1,<5.0.0)",
     "steamroller @ git+https://github.com/hmcgovern/steamroller.git",
@@ -14,7 +14,11 @@ dependencies = [
     "ujson (>=5.10.0,<6.0.0)",
     "pandas (>=2.2.3,<3.0.0)",
     "nltk (>=3.9.1,<4.0.0)",
-    "accelerate (>=1.7.0,<2.0.0)"
+    "accelerate (>=1.7.0,<2.0.0)",
+    "spacy (>=3.8.7,<4.0.0)",
+    "numpy",
+    "la-core-web-lg @ https://huggingface.co/latincy/la_core_web_lg/resolve/main/la_core_web_lg-3.8.0-py3-none-any.whl",
+    "matplotlib (>=3.10.3,<4.0.0)"
 ]
 
 

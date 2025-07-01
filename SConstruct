@@ -51,17 +51,18 @@ vars.AddVariables(
         "ORIGINALS",
         "",
         [
-            {"testament" : "OT", "language" : "Greek", "form" : "Septuagint", "file" : "${DATA_PATH}/LXX/LXX_aligned.json", "manuscript" : "LXX"},
+            # {"testament" : "OT", "language" : "Greek", "form" : "Septuagint", "file" : "${DATA_PATH}/LXX/LXX_aligned.json", "manuscript" : "LXX"},
             {"testament" : "NT", "language" : "Greek", "form" : "Septuagint", "file" : "${STEP_BIBLE_PATH}/NT_aligned.json", "manuscript" : "TAGNT"},
             {"testament" : "OT", "language" : "Hebrew", "form" : "STEP", "file" : "${STEP_BIBLE_PATH}/OT_aligned.json", "manuscript" : "TAHOT"},
         ]
     ),
     ("TRANSLATION_LANGUAGES", "", [
                                     "English", 
-                                    # "Finnish",
-                                    # "Turkish", 
-                                    # "Swedish", 
-                                    # "Marathi"
+                                    "Finnish",
+                                    "Turkish", 
+                                    "Swedish", 
+                                    "Marathi",
+                                    "Greek"
                                     ]),
     ("MODELS", "",["CohereForAI/aya-23-8B"]),
     ("OT_DATA", "", "${DATA_DIR}/STEP/OT_aligned.json"),
@@ -261,7 +262,7 @@ for original in env["ORIGINALS"]:
                     translation_path,
                     orig,
                     PROMPT=prompt,
-                    BATCH_SIZE=15,
+                    BATCH_SIZE=64,
                     MODEL=model,
                 )
                 # N.B. make sure to create the prompt for the language prior to the translation step.

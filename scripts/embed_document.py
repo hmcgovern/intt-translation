@@ -33,7 +33,7 @@ if __name__ == "__main__":
             item = json.loads(line)
             if item["text"]== None:
                 continue
-            locs.append(Location(item["location"]))
+            locs.append(item["location"])
             texts.append(item["text"])
             # SANITY!
             if i > 1_000:

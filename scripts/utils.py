@@ -27,8 +27,8 @@ def check_bfloat16_support():
             return False
     else:
         return None
-    
-    
+
+
 def load_llm(llm_model_path, qlora=False, force_download=False, from_init=False):
     """ load huggingface language model """
     compute_dtype, torch_dtype = auto_determine_dtype()
@@ -275,6 +275,9 @@ step_lookup = {
     "SNG" : "SOS"
 }
 
+
+
+
 class Location(dict):
     def __init__(self, value):
         if isinstance(value, str):
@@ -307,14 +310,14 @@ class Location(dict):
         return (book2id[self["book"]], self["chapter"], self["verse"]) <= (book2id[other["book"]], other["chapter"], other["verse"])
 
     def __lt__(self, other):
-        return (book2id[self["book"]], self["chapter"], self["verse"]) < (book2id[other["book"]], other["chapter"], other["verse"])    
+        return (book2id[self["book"]], self["chapter"], self["verse"]) < (book2id[other["book"]], other["chapter"], other["verse"])
 
     def __hash__(self):
         return hash(repr(self))
 
     def testament(self):
         return "NT" if self["book"] in NT else "OT"
-    
+
 
 class Bible(dict):
     def __init__(self, filename):
